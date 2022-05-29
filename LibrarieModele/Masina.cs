@@ -16,6 +16,7 @@ namespace LibrarieModele
 
         public Masina()
         { }
+
         public Masina(DateTime dataFabricatie, int idCompanie, string model, decimal pret, int idMasina = 0)
         {
             IdMasina = idMasina;

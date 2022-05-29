@@ -66,9 +66,17 @@
   <ItemGroup>
     <Compile Include="AdministrareMasini.cs" />
     <Compile Include="AdministrareCompanii.cs" />
+    <Compile Include="EmployeesAdministrator.cs" />
+    <Compile Include="EmployeesInProjectsAdministrator.cs" />
+    <Compile Include="ProjectsAdministrator.cs" />
+    <Compile Include="RolesAdministrator.cs" />
     <Compile Include="IStocareFactory.cs" />
     <Compile Include="IStocareMasini.cs" />
     <Compile Include="IStocareCompanii.cs" />
+    <Compile Include="IEmployeesStorage.cs" />
+    <Compile Include="IEmployeesInProjectsStorage.cs" />
+    <Compile Include="IProjectsStorage.cs" />
+    <Compile Include="IRolesStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLDbHelper.cs" />
   </ItemGroup>

@@ -78,18 +78,28 @@ namespace NivelAccesDate
                         cmd.Parameters.Add(item);
                     }
 
+                    cmd.Connection.Open();
+
+                    OracleTransaction transaction = conn.BeginTransaction(IsolationLevel.ReadCommitted);
+                    cmd.Transaction = transaction;
+
                     try
                     {
-                        cmd.Connection.Open();
                         rezult = cmd.ExecuteNonQuery();
+
+                        transaction.Commit();
                     }
                     catch (OracleException ex)
                     {
+                        transaction.Rollback();
+
                         //salveaza exceptii in fisiere log
                     }
                 }
             }
+
             return Convert.ToBoolean(rezult);
         }
     }
 }
+

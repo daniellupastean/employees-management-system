@@ -67,11 +67,9 @@
             this.groupBox1.Controls.Add(this.txtModel);
             this.groupBox1.Controls.Add(this.txtPret);
             this.groupBox1.Controls.Add(this.txtData);
-            this.groupBox1.Location = new System.Drawing.Point(16, 246);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Location = new System.Drawing.Point(12, 200);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(525, 194);
+            this.groupBox1.Size = new System.Drawing.Size(394, 158);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Adaugare masina";
@@ -79,19 +77,17 @@
             // lblIdMasina
             // 
             this.lblIdMasina.AutoSize = true;
-            this.lblIdMasina.Location = new System.Drawing.Point(575, 85);
-            this.lblIdMasina.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblIdMasina.Location = new System.Drawing.Point(431, 69);
             this.lblIdMasina.Name = "lblIdMasina";
-            this.lblIdMasina.Size = new System.Drawing.Size(0, 17);
+            this.lblIdMasina.Size = new System.Drawing.Size(0, 13);
             this.lblIdMasina.TabIndex = 9;
             this.lblIdMasina.Visible = false;
             // 
             // btnAdaugaMasina
             // 
-            this.btnAdaugaMasina.Location = new System.Drawing.Point(403, 143);
-            this.btnAdaugaMasina.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAdaugaMasina.Location = new System.Drawing.Point(302, 116);
             this.btnAdaugaMasina.Name = "btnAdaugaMasina";
-            this.btnAdaugaMasina.Size = new System.Drawing.Size(100, 28);
+            this.btnAdaugaMasina.Size = new System.Drawing.Size(75, 23);
             this.btnAdaugaMasina.TabIndex = 8;
             this.btnAdaugaMasina.Text = "Adauga";
             this.btnAdaugaMasina.UseVisualStyleBackColor = true;
@@ -100,82 +96,73 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(29, 156);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(22, 127);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 17);
+            this.label4.Size = new System.Drawing.Size(26, 13);
             this.label4.TabIndex = 7;
             this.label4.Text = "Pret";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(29, 73);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(22, 59);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 17);
+            this.label3.Size = new System.Drawing.Size(54, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Companie";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(29, 114);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(22, 93);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 17);
+            this.label2.Size = new System.Drawing.Size(36, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "Model";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 37);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(22, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 17);
+            this.label1.Size = new System.Drawing.Size(79, 13);
             this.label1.TabIndex = 4;
             this.label1.Text = "Data Fabricatie";
             // 
             // cmbCompanii
             // 
             this.cmbCompanii.FormattingEnabled = true;
-            this.cmbCompanii.Location = new System.Drawing.Point(151, 63);
-            this.cmbCompanii.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbCompanii.Location = new System.Drawing.Point(113, 51);
             this.cmbCompanii.Name = "cmbCompanii";
-            this.cmbCompanii.Size = new System.Drawing.Size(219, 24);
+            this.cmbCompanii.Size = new System.Drawing.Size(165, 21);
             this.cmbCompanii.TabIndex = 3;
             // 
             // txtModel
             // 
-            this.txtModel.Location = new System.Drawing.Point(151, 106);
-            this.txtModel.Margin = new System.Windows.Forms.Padding(4);
+            this.txtModel.Location = new System.Drawing.Point(113, 86);
             this.txtModel.Name = "txtModel";
-            this.txtModel.Size = new System.Drawing.Size(219, 22);
+            this.txtModel.Size = new System.Drawing.Size(165, 20);
             this.txtModel.TabIndex = 2;
             // 
             // txtPret
             // 
-            this.txtPret.Location = new System.Drawing.Point(151, 146);
-            this.txtPret.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPret.Location = new System.Drawing.Point(113, 119);
             this.txtPret.Name = "txtPret";
-            this.txtPret.Size = new System.Drawing.Size(219, 22);
+            this.txtPret.Size = new System.Drawing.Size(165, 20);
             this.txtPret.TabIndex = 1;
             // 
             // txtData
             // 
-            this.txtData.Location = new System.Drawing.Point(151, 28);
-            this.txtData.Margin = new System.Windows.Forms.Padding(4);
+            this.txtData.Location = new System.Drawing.Point(113, 23);
             this.txtData.Name = "txtData";
-            this.txtData.Size = new System.Drawing.Size(219, 22);
+            this.txtData.Size = new System.Drawing.Size(165, 20);
             this.txtData.TabIndex = 0;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(419, 463);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancel.Location = new System.Drawing.Point(314, 376);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(100, 28);
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -193,39 +180,35 @@
             this.groupBox2.Controls.Add(this.txtTelefon);
             this.groupBox2.Controls.Add(this.txtAdresa);
             this.groupBox2.Controls.Add(this.txtNume);
-            this.groupBox2.Location = new System.Drawing.Point(16, 31);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Location = new System.Drawing.Point(12, 25);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(525, 194);
+            this.groupBox2.Size = new System.Drawing.Size(394, 158);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Adaugare companie";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(151, 64);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
+            this.txtEmail.Location = new System.Drawing.Point(113, 52);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(219, 22);
+            this.txtEmail.Size = new System.Drawing.Size(165, 20);
             this.txtEmail.TabIndex = 10;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(575, 85);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(431, 69);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(0, 17);
+            this.label5.Size = new System.Drawing.Size(0, 13);
             this.label5.TabIndex = 9;
             this.label5.Visible = false;
             // 
             // btnAdaugaComp
             // 
-            this.btnAdaugaComp.Location = new System.Drawing.Point(403, 143);
-            this.btnAdaugaComp.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAdaugaComp.Location = new System.Drawing.Point(302, 116);
             this.btnAdaugaComp.Name = "btnAdaugaComp";
-            this.btnAdaugaComp.Size = new System.Drawing.Size(100, 28);
+            this.btnAdaugaComp.Size = new System.Drawing.Size(75, 23);
             this.btnAdaugaComp.TabIndex = 8;
             this.btnAdaugaComp.Text = "Adauga";
             this.btnAdaugaComp.UseVisualStyleBackColor = true;
@@ -234,76 +217,69 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(29, 156);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(22, 127);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 17);
+            this.label6.Size = new System.Drawing.Size(40, 13);
             this.label6.TabIndex = 7;
             this.label6.Text = "Adresa";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(29, 73);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(22, 59);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(42, 17);
+            this.label7.Size = new System.Drawing.Size(32, 13);
             this.label7.TabIndex = 6;
             this.label7.Text = "Email";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(29, 114);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(22, 93);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(56, 17);
+            this.label8.Size = new System.Drawing.Size(43, 13);
             this.label8.TabIndex = 5;
             this.label8.Text = "Telefon";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(29, 37);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(22, 30);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(45, 17);
+            this.label9.Size = new System.Drawing.Size(35, 13);
             this.label9.TabIndex = 4;
             this.label9.Text = "Nume";
             // 
             // txtTelefon
             // 
-            this.txtTelefon.Location = new System.Drawing.Point(151, 106);
-            this.txtTelefon.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTelefon.Location = new System.Drawing.Point(113, 86);
             this.txtTelefon.Name = "txtTelefon";
-            this.txtTelefon.Size = new System.Drawing.Size(219, 22);
+            this.txtTelefon.Size = new System.Drawing.Size(165, 20);
             this.txtTelefon.TabIndex = 2;
             // 
             // txtAdresa
             // 
-            this.txtAdresa.Location = new System.Drawing.Point(151, 146);
-            this.txtAdresa.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAdresa.Location = new System.Drawing.Point(113, 119);
             this.txtAdresa.Name = "txtAdresa";
-            this.txtAdresa.Size = new System.Drawing.Size(219, 22);
+            this.txtAdresa.Size = new System.Drawing.Size(165, 20);
             this.txtAdresa.TabIndex = 1;
             // 
             // txtNume
             // 
-            this.txtNume.Location = new System.Drawing.Point(151, 28);
-            this.txtNume.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNume.Location = new System.Drawing.Point(113, 23);
             this.txtNume.Name = "txtNume";
-            this.txtNume.Size = new System.Drawing.Size(219, 22);
+            this.txtNume.Size = new System.Drawing.Size(165, 20);
             this.txtNume.TabIndex = 0;
             // 
             // FormaAdaugare
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(559, 505);
+            this.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.ClientSize = new System.Drawing.Size(419, 410);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormaAdaugare";
             this.Text = "Adaugare companie/masina";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormaAdaugare_FormClosed);

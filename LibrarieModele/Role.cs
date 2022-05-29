@@ -1,14 +1,26 @@
 ﻿using System;
+using System.Data;
 
-/// <summary>
-/// Summary description for Role
-/// </summary>
-public class Role
+namespace LibrarieModele
 {
-	public Role()
+	public class Role
 	{
-		//
-		// TODO: Add constructor logic here
-		//
+		public int RoleId { get; set; }
+		public string Title { get; set; }
+
+		public Role()
+		{ }
+
+		public Role(string title, int roleId = 0)
+        {
+			RoleId = roleId;
+			Title = title;
+        }
+
+		public Role(DataRow linieBD)
+        {
+			RoleId = Convert.ToInt32(linieBD["role_id"].ToString());
+			Title = linieBD["title"].ToString();
+		}
 	}
 }

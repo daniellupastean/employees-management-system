@@ -9,7 +9,6 @@ namespace NivelAccesDate
         List<Companie> GetCompanii();
         Companie GetCompanie(int id);
         bool AddCompanie(Companie c);
-
         bool UpdateCompanie(Companie c);
     }
 }
