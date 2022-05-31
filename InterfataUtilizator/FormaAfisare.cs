@@ -47,8 +47,8 @@ namespace InterfataUtilizator
         /// <param name="e"></param>
         private void dataGridMasini_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int currentRowIndex = dataGridMasini.CurrentCell.RowIndex;
-            string idMasina = dataGridMasini[PRIMA_COLOANA, currentRowIndex].Value.ToString();
+            int currentRowIndex = dataGridEmployees.CurrentCell.RowIndex;
+            string idMasina = dataGridEmployees[PRIMA_COLOANA, currentRowIndex].Value.ToString();
 
             try
             {
@@ -58,10 +58,10 @@ namespace InterfataUtilizator
                 if (m != null)
                 {
                     lblIdMasina.Text = m.IdMasina.ToString();
-                    txtData.Text = m.DataFabricatie.ToShortDateString();
-                    cmbCompanii.SelectedItem = new ComboItem(m.Companie.Nume, m.IdCompanie);
-                    txtModel.Text = m.Model;
-                    txtPret.Text = m.Pret.ToString();
+                    txtFirstName.Text = m.DataFabricatie.ToShortDateString();
+                    cmbRoles.SelectedItem = new ComboItem(m.Companie.Nume, m.IdCompanie);
+                    txtEmail.Text = m.Model;
+                    txtBirthDate.Text = m.Pret.ToString();
                 }
             }
             catch (Exception ex)
@@ -81,10 +81,10 @@ namespace InterfataUtilizator
             try
             {
                 var masina = new Masina(
-                    Convert.ToDateTime(txtData.Text),
-                    ((ComboItem)cmbCompanii.SelectedItem).Value,
-                    txtModel.Text,
-                    decimal.Parse(txtPret.Text),
+                    Convert.ToDateTime(txtFirstName.Text),
+                    ((ComboItem)cmbRoles.SelectedItem).Value,
+                    txtEmail.Text,
+                    decimal.Parse(txtBirthDate.Text),
                     Int32.Parse(lblIdMasina.Text));
 
                 var rezultat = stocareMasini.UpdateMasina(masina);
@@ -123,14 +123,14 @@ namespace InterfataUtilizator
             try
             {
                 //se elimina itemii deja adaugati
-                cmbCompanii.Items.Clear();
+                cmbRoles.Items.Clear();
 
                 var companii = stocareCompanii.GetCompanii();
                 if (companii != null && companii.Any())
                 {
                     foreach (var companie in companii)
                     {
-                        cmbCompanii.Items.Add(new ComboItem(companie.Nume, (Int32)companie.IdCompanie));
+                        cmbRoles.Items.Add(new ComboItem(companie.Nume, (Int32)companie.IdCompanie));
                     }
                 }
             }
@@ -150,11 +150,11 @@ namespace InterfataUtilizator
                 var masini = stocareMasini.GetMasini();
                 if (masini != null && masini.Any())
                 {
-                    dataGridMasini.DataSource = masini.Select(m=> new { m.IdMasina, m.Model, m.Companie.Nume, m.DataFabricatie, m.Pret }).ToList() ;
+                    dataGridEmployees.DataSource = masini.Select(m=> new { m.IdMasina, m.Model, m.Companie.Nume, m.DataFabricatie, m.Pret }).ToList() ;
 
-                    dataGridMasini.Columns["IdMasina"].Visible = false;
-                    dataGridMasini.Columns["Nume"].HeaderText = "Companie";
-                    dataGridMasini.Columns["DataFabricatie"].HeaderText = "Data fabricatie";
+                    dataGridEmployees.Columns["IdMasina"].Visible = false;
+                    dataGridEmployees.Columns["Nume"].HeaderText = "Companie";
+                    dataGridEmployees.Columns["DataFabricatie"].HeaderText = "Data fabricatie";
                 }
             }
             catch (Exception ex)
@@ -164,5 +164,35 @@ namespace InterfataUtilizator
         }
 
         #endregion
+
+        private void groupBoxEditare_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtFirstName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtLastName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtBirthDate_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtHireDate_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
