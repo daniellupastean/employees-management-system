@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using LibrarieModele;
 using Oracle.DataAccess.Client;
@@ -19,7 +20,7 @@ namespace NivelAccesDate
             {
                 var employee = new Employee(linieBD);
                 //incarca entitatile aditionale
-                //employee.Companie = new AdministrareCompanii().GetCompanie(masina.IdCompanie);
+                employee.Role = new RolesAdministrator().GetRole(employee.RoleId);
                 result.Add(employee);
             }
 
@@ -37,7 +38,7 @@ namespace NivelAccesDate
                 DataRow linieBD = dsEmployees.Tables[PRIMUL_TABEL].Rows[PRIMA_LINIE];
                 result = new Employee(linieBD);
                 //incarca entitatile aditionale
-                //result.Companie = new AdministrareCompanii().GetCompanie(result.IdCompanie);
+                result.Role = new RolesAdministrator().GetRole(result.RoleId);
             }
             return result;
         }
@@ -59,7 +60,7 @@ namespace NivelAccesDate
         public bool UpdateEmployee(Employee e)
         {
             return SqlDBHelper.ExecuteNonQuery(
-                "UPDATE employees_ems_lup SET  first_name =:FirstName, last_name =:LastName, email =:Email, birth_date = :BirthDate, hire_date = :HireDate, role_id = :RoleId, model =:Model where employee_id=:EmployeeId", CommandType.Text,
+                "UPDATE employees_ems_lup SET first_name =:FirstName, last_name =:LastName, email =:Email, birth_date = :BirthDate, hire_date = :HireDate, role_id = :RoleId where employee_id=:EmployeeId", CommandType.Text,
                 new OracleParameter(":FirstName", OracleDbType.NVarchar2, e.FirstName, ParameterDirection.Input),
                 new OracleParameter(":LastName", OracleDbType.NVarchar2, e.LastName, ParameterDirection.Input),
                 new OracleParameter(":Email", OracleDbType.NVarchar2, e.Email, ParameterDirection.Input),
@@ -68,6 +69,13 @@ namespace NivelAccesDate
                 new OracleParameter(":RoleId", OracleDbType.Int32, e.RoleId, ParameterDirection.Input),
                 new OracleParameter(":EmployeeId", OracleDbType.Int32, e.EmployeeId, ParameterDirection.Input)
             );
+        }
+
+        public int GetEmployeesNumber()
+        {
+            var dsResult =  SqlDBHelper.ExecuteDataSet("SELECT COUNT(employee_id) AS employees_no FROM employees_ems_lup", CommandType.Text);
+            DataRow linieBD = dsResult.Tables[PRIMUL_TABEL].Rows[PRIMA_LINIE];
+            return Convert.ToInt32(linieBD["employees_no"].ToString());
         }
     }
 }

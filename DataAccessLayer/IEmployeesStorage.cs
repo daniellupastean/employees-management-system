@@ -11,5 +11,6 @@ namespace NivelAccesDate
         Employee GetEmployee(int id);
         bool AddEmployee(Employee e);
         bool UpdateEmployee(Employee e);
+        int GetEmployeesNumber();
     }
 }

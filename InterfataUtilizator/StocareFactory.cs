@@ -29,6 +29,15 @@ namespace InterfataUtilizator
                         {
                             return new AdministrareMasini();
                         }
+                        if (tipEntitate == typeof(Employee))
+                        {
+                            return new EmployeesAdministrator();
+                        }
+                        if (tipEntitate == typeof(Role))
+                        {
+                            return new RolesAdministrator();
+                        }
+
                         break;
 
                     case "BIN":

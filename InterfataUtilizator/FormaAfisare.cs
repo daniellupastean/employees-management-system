@@ -14,22 +14,26 @@ namespace InterfataUtilizator
 
         //initializare obiecte utilizate pentru salvarea datelor in baza de date (sau alte medii de stocare...daca exista implementare corespunzatoare)
         IStocareCompanii stocareCompanii = (IStocareCompanii)new StocareFactory().GetTipStocare(typeof(Companie));
-        IStocareMasini stocareMasini = (IStocareMasini)new StocareFactory().GetTipStocare(typeof(Masina));
+        IEmployeesStorage storeEmployees = (IEmployeesStorage)new StocareFactory().GetTipStocare(typeof(Employee));
+        IRolesStorage storeRoles = (IRolesStorage)new StocareFactory().GetTipStocare(typeof(Role));
 
         public FormaAfisare()
         {
             InitializeComponent();
-            if (stocareMasini == null || stocareCompanii == null)
+            if (storeEmployees == null || stocareCompanii == null)
             {
                 MessageBox.Show("Eroare la initializare");
             }
+
+            pnlHome.BringToFront();
         }
 
         #region handlere ale evenimentelor formei
         private void FormaAfisare_Load(object sender, EventArgs e)
         {
-            AfiseazaCatalog();
-            IncarcaCompanii();
+            ShowEmployees();
+            LoadRoles();
+            PopulateHomePage();
         }
         private void FormaAfisare_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -40,75 +44,13 @@ namespace InterfataUtilizator
 
         #region handlere ale evenimentelor controalelor de pe forma (butoane, dataGrid)
 
-        /// <summary>
-        /// afiseaza informatiile despre masina selectata in controale ce permit editarea
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void dataGridMasini_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int currentRowIndex = dataGridEmployees.CurrentCell.RowIndex;
-            string idMasina = dataGridEmployees[PRIMA_COLOANA, currentRowIndex].Value.ToString();
-
-            try
-            {
-                Masina m = stocareMasini.GetMasina(Int32.Parse(idMasina));
-
-                //incarcarea datelor in controalele de pe forma
-                if (m != null)
-                {
-                    lblIdMasina.Text = m.IdMasina.ToString();
-                    txtFirstName.Text = m.DataFabricatie.ToShortDateString();
-                    cmbRoles.SelectedItem = new ComboItem(m.Companie.Nume, m.IdCompanie);
-                    txtEmail.Text = m.Model;
-                    txtBirthDate.Text = m.Pret.ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-            groupBoxEditare.Visible = true;
-        }
-
-        /// <summary>
-        /// Actualizeaza inregistrarea afisata spre editare din tabelul masini_DEV
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnActualizeaza_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var masina = new Masina(
-                    Convert.ToDateTime(txtFirstName.Text),
-                    ((ComboItem)cmbRoles.SelectedItem).Value,
-                    txtEmail.Text,
-                    decimal.Parse(txtBirthDate.Text),
-                    Int32.Parse(lblIdMasina.Text));
-
-                var rezultat = stocareMasini.UpdateMasina(masina);
-                if (rezultat == SUCCES)
-                {
-                    MessageBox.Show("Masina actualizata");
-                    AfiseazaCatalog();
-                }
-                else
-                {
-                    MessageBox.Show("Eroare la actualizare masina");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Exceptie" + ex.Message);
-            }
-        }
 
         private void btnAfiseazaFormaAdaugare_Click(object sender, EventArgs e)
         {
             FormaAdaugare f = new FormaAdaugare();
             f.Show();
             this.Hide();
+            pnlEmployees.BringToFront();
         }
 
         #endregion
@@ -116,21 +58,22 @@ namespace InterfataUtilizator
         #region metode helper
 
         /// <summary>
-        /// Afiseaza companiile din tabelul companii_DEV in controlul de tip combobox
+        /// Afiseaza rolurile din tabelul roles_ems_lup in controlul de tip combobox
         /// </summary>
-        private void IncarcaCompanii()
+
+        private void LoadRoles()
         {
             try
             {
                 //se elimina itemii deja adaugati
                 cmbRoles.Items.Clear();
 
-                var companii = stocareCompanii.GetCompanii();
-                if (companii != null && companii.Any())
+                var roles = storeRoles.GetRoles();
+                if (roles != null && roles.Any())
                 {
-                    foreach (var companie in companii)
+                    foreach (var role in roles)
                     {
-                        cmbRoles.Items.Add(new ComboItem(companie.Nume, (Int32)companie.IdCompanie));
+                        cmbRoles.Items.Add(new ComboItem(role.Title, (Int32)role.RoleId));
                     }
                 }
             }
@@ -143,18 +86,18 @@ namespace InterfataUtilizator
         /// <summary>
         /// afiseaza informatiile complete despre masini 
         /// </summary>
-        private void AfiseazaCatalog()
+        private void ShowEmployees()
         {
             try
             {
-                var masini = stocareMasini.GetMasini();
-                if (masini != null && masini.Any())
-                {
-                    dataGridEmployees.DataSource = masini.Select(m=> new { m.IdMasina, m.Model, m.Companie.Nume, m.DataFabricatie, m.Pret }).ToList() ;
+                var employees = storeEmployees.GetEmployees();
 
-                    dataGridEmployees.Columns["IdMasina"].Visible = false;
-                    dataGridEmployees.Columns["Nume"].HeaderText = "Companie";
-                    dataGridEmployees.Columns["DataFabricatie"].HeaderText = "Data fabricatie";
+                if (employees != null && employees.Any())
+                {
+                    dataGridEmployees.DataSource = employees.Select(e=> new { e.EmployeeId, e.FirstName, e.LastName, e.Email, e.BirthDate, e.HireDate, e.Role.Title }).ToList() ;
+                    dataGridEmployees.Columns["EmployeeId"].Visible = false;
+                    dataGridEmployees.Columns["Title"].HeaderText = "Role";
+                    // dataGridEmployees.Columns["DataFabricatie"].HeaderText = "Data fabricatie";
                 }
             }
             catch (Exception ex)
@@ -165,34 +108,104 @@ namespace InterfataUtilizator
 
         #endregion
 
-        private void groupBoxEditare_Enter(object sender, EventArgs e)
+        private void btnHome_Click(object sender, EventArgs e)
         {
-
+            pnlHome.BringToFront();
         }
 
-        private void txtFirstName_TextChanged(object sender, EventArgs e)
+        private void btnEmployees_Click(object sender, EventArgs e)
         {
-
+            pnlEmployees.BringToFront(); 
         }
 
-        private void txtLastName_TextChanged(object sender, EventArgs e)
+        private void btnProjects_Click(object sender, EventArgs e)
         {
-
+            pnlProjects.BringToFront();
         }
 
-        private void txtEmail_TextChanged(object sender, EventArgs e)
+        private void btnRoles_Click(object sender, EventArgs e)
         {
-
+            pnlRoles.BringToFront();
         }
 
-        private void txtBirthDate_TextChanged(object sender, EventArgs e)
+        private void dataGridEmployees_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            int currentRowIndex = dataGridEmployees.CurrentCell.RowIndex;
+            string employeeId = dataGridEmployees[PRIMA_COLOANA, currentRowIndex].Value.ToString();
 
+            try
+            {
+                Employee emp = storeEmployees.GetEmployee(Int32.Parse(employeeId));
+
+                //incarcarea datelor in controalele de pe forma
+                if (emp != null)
+                {
+                    txtFirstName.Text = emp.FirstName;
+                    txtLastName.Text = emp.LastName;
+                    cmbRoles.SelectedItem = new ComboItem(emp.Role.Title, emp.RoleId);
+                    txtEmail.Text = emp.Email;
+                    txtBirthDate.Text = emp.BirthDate.ToShortDateString();
+                    txtHireDate.Text = emp.HireDate.ToShortDateString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
 
-        private void txtHireDate_TextChanged(object sender, EventArgs e)
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
+            try
+            {
+                int currentRowIndex = dataGridEmployees.CurrentCell.RowIndex;
+                string employeeId = dataGridEmployees[PRIMA_COLOANA, currentRowIndex].Value.ToString();
+                var employee = new Employee(
+                       txtFirstName.Text,
+                       txtLastName.Text,
+                       txtEmail.Text,
+                       Convert.ToDateTime(txtBirthDate.Text),
+                       Convert.ToDateTime(txtHireDate.Text),
+                       ((ComboItem)cmbRoles.SelectedItem).Value,
+                       Int32.Parse(employeeId));
 
+                var result = storeEmployees.UpdateEmployee(employee);
+                Console.WriteLine(employee.EmployeeId);
+                Console.WriteLine(employee.FirstName);
+                Console.WriteLine(employee.LastName);
+                Console.WriteLine(employee.Email);
+                Console.WriteLine(employee.BirthDate);
+                Console.WriteLine(employee.HireDate);
+                Console.WriteLine(employee.RoleId);
+
+                if (result == SUCCES)
+                {
+                    MessageBox.Show("Updated employee");
+                    ShowEmployees();
+                }
+                else
+                {
+                    MessageBox.Show("Error when updating the employee");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception" + ex.Message);
+            }
+        }
+
+        private void PopulateHomePage()
+        {
+            try
+            {
+                int employees_no = storeEmployees.GetEmployeesNumber();
+
+                lblEmployeesNo.Text = employees_no.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
     }
 }
