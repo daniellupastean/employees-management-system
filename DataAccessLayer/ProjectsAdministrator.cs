@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using LibrarieModele;
 using Oracle.DataAccess.Client;
@@ -45,8 +46,7 @@ namespace NivelAccesDate
         public bool AddProject(Project p)
         {
             return SqlDBHelper.ExecuteNonQuery(
-                "INSERT INTO projects_ems_lup VALUES (seq_projects_ems_lup.nextval, :ProjectId, :Title, :Finished)", CommandType.Text,
-                new OracleParameter(":ProjectId", OracleDbType.Int32, p.ProjectId, ParameterDirection.Input),
+                "INSERT INTO projects_ems_lup VALUES (seq_projects_ems_lup.nextval, :Title, :Finished)", CommandType.Text,
                 new OracleParameter(":Title", OracleDbType.NVarchar2, p.Title, ParameterDirection.Input),
                 new OracleParameter(":Finished", OracleDbType.Int32, p.Finished, ParameterDirection.Input)
             );
@@ -60,6 +60,17 @@ namespace NivelAccesDate
                 new OracleParameter(":Finished", OracleDbType.Int32, p.Finished, ParameterDirection.Input),
                 new OracleParameter(":ProjectId", OracleDbType.Int32, p.ProjectId, ParameterDirection.Input)
             );
+        }
+        public int GetProjectsNumber()
+        {
+            var dsResult = SqlDBHelper.ExecuteDataSet("SELECT COUNT(project_id) AS projects_no FROM projects_ems_lup", CommandType.Text);
+            DataRow linieBD = dsResult.Tables[PRIMUL_TABEL].Rows[PRIMA_LINIE];
+            return Convert.ToInt32(linieBD["projects_no"].ToString());
+        }
+        public bool DeleteProject(int id)
+        {
+            return SqlDBHelper.ExecuteNonQuery("DELETE FROM projects_ems_lup WHERE project_id = :ProjectId", CommandType.Text,
+                new OracleParameter(":ProjectId", OracleDbType.Int32, id, ParameterDirection.Input));
         }
     }
 }

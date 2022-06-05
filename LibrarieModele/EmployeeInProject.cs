@@ -3,12 +3,15 @@ using System.Data;
 
 namespace LibrarieModele
 {
-	public class EmployeeInProject
-	{
+    public class EmployeeInProject
+    {
         public int Id { get; set; }
         public int EmployeeId { get; set; }
+        public virtual Employee Employee {get; set;}
         public int ProjectId { get; set; }
+        public virtual Project Project { get; set; }
         public int RoleId { get; set; }
+        public virtual Role Role { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime StopDate { get; set; }
         public bool Active { get; set; }

@@ -67,7 +67,7 @@ namespace NivelAccesDate
         /// <returns> returneaza 'true' daca instructiunea a fost executata cu success</returns>
         public static bool ExecuteNonQuery(string sql, CommandType cmdType, params OracleParameter[] parameters)
         {
-            int rezult = EROARE_LA_EXECUTIE;
+            int result = EROARE_LA_EXECUTIE;
             using (OracleConnection conn = new OracleConnection(ConnectionString))
             {
                 using (OracleCommand cmd = new OracleCommand(sql, conn))
@@ -85,12 +85,13 @@ namespace NivelAccesDate
 
                     try
                     {
-                        rezult = cmd.ExecuteNonQuery();
+                        result = cmd.ExecuteNonQuery();
 
                         transaction.Commit();
                     }
                     catch (OracleException ex)
                     {
+                        Console.WriteLine(ex.Message);
                         transaction.Rollback();
 
                         //salveaza exceptii in fisiere log
@@ -98,7 +99,7 @@ namespace NivelAccesDate
                 }
             }
 
-            return Convert.ToBoolean(rezult);
+            return Convert.ToBoolean(result);
         }
     }
 }

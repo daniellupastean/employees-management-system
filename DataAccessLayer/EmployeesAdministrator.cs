@@ -46,8 +46,7 @@ namespace NivelAccesDate
         public bool AddEmployee(Employee e)
         {
             return SqlDBHelper.ExecuteNonQuery(
-                "INSERT INTO employees_ems_lup VALUES (seq_employees_ems_lup.nextval, :EmployeeId, :FirstName, :LastName, :Email, :BirthDate, :HireDate, :RoleId)", CommandType.Text,
-                new OracleParameter(":EmployeeId", OracleDbType.Int32, e.EmployeeId, ParameterDirection.Input),
+                "INSERT INTO employees_ems_lup VALUES (seq_employees_ems_lup.nextval, :FirstName, :LastName, :Email, :BirthDate, :HireDate, :RoleId)", CommandType.Text,
                 new OracleParameter(":FirstName", OracleDbType.NVarchar2, e.FirstName, ParameterDirection.Input),
                 new OracleParameter(":LastName", OracleDbType.NVarchar2, e.LastName, ParameterDirection.Input),
                 new OracleParameter(":Email", OracleDbType.NVarchar2, e.Email, ParameterDirection.Input),
@@ -76,6 +75,23 @@ namespace NivelAccesDate
             var dsResult =  SqlDBHelper.ExecuteDataSet("SELECT COUNT(employee_id) AS employees_no FROM employees_ems_lup", CommandType.Text);
             DataRow linieBD = dsResult.Tables[PRIMUL_TABEL].Rows[PRIMA_LINIE];
             return Convert.ToInt32(linieBD["employees_no"].ToString());
+        }
+
+        public string GetCelebratedEmployee()
+        {
+            var dsResult = SqlDBHelper.ExecuteDataSet("SELECT UPPER(CONCAT(CONCAT(first_name,'\r\n'), last_name)) AS celebrated_employee FROM employees_ems_lup WHERE TO_CHAR(birth_date, 'DD-MM') = TO_CHAR(CURRENT_DATE, 'DD-MM')", CommandType.Text);
+            if (dsResult.Tables[PRIMUL_TABEL].Rows.Count > 0)
+            {
+                DataRow linieBD = dsResult.Tables[PRIMUL_TABEL].Rows[PRIMA_LINIE];
+                return linieBD["celebrated_employee"].ToString();
+            }
+            else return "No employee";
+        }
+
+        public bool DeleteEmployee(int id)
+        {
+           return SqlDBHelper.ExecuteNonQuery("DELETE FROM employees_ems_lup WHERE employee_id = :EmployeeId", CommandType.Text,
+                new OracleParameter(":EmployeeId", OracleDbType.Int32, id, ParameterDirection.Input));
         }
     }
 }

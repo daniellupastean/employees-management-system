@@ -29,11 +29,16 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormaAfisare));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnEmployees = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
             this.btnProjects = new System.Windows.Forms.Button();
             this.btnRoles = new System.Windows.Forms.Button();
-            this.btnSettings = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlHome = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -50,9 +55,8 @@
             this.pnlEmployees = new System.Windows.Forms.Panel();
             this.groupBoxEditare = new System.Windows.Forms.GroupBox();
             this.dataGridViewProjects = new System.Windows.Forms.DataGridView();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnAddNewEmployee = new System.Windows.Forms.Button();
+            this.btnUnassignEmployee = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtHireDate = new System.Windows.Forms.TextBox();
             this.lblHireDate = new System.Windows.Forms.Label();
@@ -71,13 +75,16 @@
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.dataGridEmployees = new System.Windows.Forms.DataGridView();
             this.pnlProjects = new System.Windows.Forms.Panel();
+            this.cmbRoleInProjects = new System.Windows.Forms.ComboBox();
+            this.lblRoleInProjects = new System.Windows.Forms.Label();
+            this.btnAddEtoP = new System.Windows.Forms.Button();
+            this.dgvEmployeesP = new System.Windows.Forms.DataGridView();
             this.groupBoxProjects = new System.Windows.Forms.GroupBox();
             this.rbtnNo = new System.Windows.Forms.RadioButton();
             this.rbtnYes = new System.Windows.Forms.RadioButton();
             this.dbvEmployeesP = new System.Windows.Forms.DataGridView();
-            this.btnResetProjects = new System.Windows.Forms.Button();
-            this.btnAddNewProject = new System.Windows.Forms.Button();
             this.btnUnasignEmployee = new System.Windows.Forms.Button();
+            this.btnAddNewProject = new System.Windows.Forms.Button();
             this.lblEmployeesOnProject = new System.Windows.Forms.Label();
             this.btnDeleteProject = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
@@ -87,17 +94,15 @@
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.dgvProjectsP = new System.Windows.Forms.DataGridView();
             this.pnlRoles = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.lblRoleTitle = new System.Windows.Forms.GroupBox();
+            this.btnAddNewRole = new System.Windows.Forms.Button();
+            this.btnDeleteRole = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btnUpdateRole = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.txtRoleTitle = new System.Windows.Forms.TextBox();
+            this.dataGridViewRoles = new System.Windows.Forms.DataGridView();
             this.pnlContainer = new System.Windows.Forms.Panel();
-            this.pnlSettings = new System.Windows.Forms.Panel();
             this.pnlHome.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -108,12 +113,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProjects)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridEmployees)).BeginInit();
             this.pnlProjects.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeesP)).BeginInit();
             this.groupBoxProjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbvEmployeesP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProjectsP)).BeginInit();
             this.pnlRoles.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.lblRoleTitle.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRoles)).BeginInit();
+            this.pnlContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnEmployees
@@ -123,9 +130,9 @@
             this.btnEmployees.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmployees.ForeColor = System.Drawing.Color.White;
-            this.btnEmployees.Location = new System.Drawing.Point(181, 10);
+            this.btnEmployees.Location = new System.Drawing.Point(221, 10);
             this.btnEmployees.Name = "btnEmployees";
-            this.btnEmployees.Size = new System.Drawing.Size(155, 30);
+            this.btnEmployees.Size = new System.Drawing.Size(193, 30);
             this.btnEmployees.TabIndex = 2;
             this.btnEmployees.Text = "EMPLOYEES";
             this.btnEmployees.UseVisualStyleBackColor = false;
@@ -138,9 +145,9 @@
             this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHome.ForeColor = System.Drawing.Color.White;
-            this.btnHome.Location = new System.Drawing.Point(24, 10);
+            this.btnHome.Location = new System.Drawing.Point(23, 10);
             this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(154, 30);
+            this.btnHome.Size = new System.Drawing.Size(193, 30);
             this.btnHome.TabIndex = 6;
             this.btnHome.Text = "HOME";
             this.btnHome.UseVisualStyleBackColor = false;
@@ -153,9 +160,9 @@
             this.btnProjects.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProjects.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProjects.ForeColor = System.Drawing.Color.White;
-            this.btnProjects.Location = new System.Drawing.Point(339, 10);
+            this.btnProjects.Location = new System.Drawing.Point(419, 10);
             this.btnProjects.Name = "btnProjects";
-            this.btnProjects.Size = new System.Drawing.Size(155, 30);
+            this.btnProjects.Size = new System.Drawing.Size(193, 30);
             this.btnProjects.TabIndex = 7;
             this.btnProjects.Text = "PROJECTS";
             this.btnProjects.UseVisualStyleBackColor = false;
@@ -168,27 +175,13 @@
             this.btnRoles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRoles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRoles.ForeColor = System.Drawing.Color.White;
-            this.btnRoles.Location = new System.Drawing.Point(497, 10);
+            this.btnRoles.Location = new System.Drawing.Point(617, 10);
             this.btnRoles.Name = "btnRoles";
-            this.btnRoles.Size = new System.Drawing.Size(155, 30);
+            this.btnRoles.Size = new System.Drawing.Size(193, 30);
             this.btnRoles.TabIndex = 8;
             this.btnRoles.Text = "ROLES";
             this.btnRoles.UseVisualStyleBackColor = false;
             this.btnRoles.Click += new System.EventHandler(this.btnRoles_Click);
-            // 
-            // btnSettings
-            // 
-            this.btnSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(78)))), ((int)(((byte)(117)))));
-            this.btnSettings.FlatAppearance.BorderSize = 0;
-            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSettings.ForeColor = System.Drawing.Color.White;
-            this.btnSettings.Location = new System.Drawing.Point(655, 10);
-            this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(155, 30);
-            this.btnSettings.TabIndex = 9;
-            this.btnSettings.Text = "SETTINGS";
-            this.btnSettings.UseVisualStyleBackColor = false;
             // 
             // label2
             // 
@@ -225,7 +218,6 @@
             // 
             // lblEmployeesText
             // 
-            this.lblEmployeesText.AutoSize = true;
             this.lblEmployeesText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmployeesText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblEmployeesText.Location = new System.Drawing.Point(71, 102);
@@ -292,7 +284,6 @@
             // 
             // lblProjectsText
             // 
-            this.lblProjectsText.AutoSize = true;
             this.lblProjectsText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProjectsText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblProjectsText.Location = new System.Drawing.Point(81, 105);
@@ -304,12 +295,11 @@
             // 
             // lblProjectsNo
             // 
-            this.lblProjectsNo.AutoSize = true;
             this.lblProjectsNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProjectsNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(78)))), ((int)(((byte)(117)))));
-            this.lblProjectsNo.Location = new System.Drawing.Point(84, 54);
+            this.lblProjectsNo.Location = new System.Drawing.Point(74, 54);
             this.lblProjectsNo.Name = "lblProjectsNo";
-            this.lblProjectsNo.Size = new System.Drawing.Size(62, 42);
+            this.lblProjectsNo.Size = new System.Drawing.Size(79, 42);
             this.lblProjectsNo.TabIndex = 19;
             this.lblProjectsNo.Text = "24";
             this.lblProjectsNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -348,9 +338,8 @@
             // groupBoxEditare
             // 
             this.groupBoxEditare.Controls.Add(this.dataGridViewProjects);
-            this.groupBoxEditare.Controls.Add(this.button7);
-            this.groupBoxEditare.Controls.Add(this.button6);
-            this.groupBoxEditare.Controls.Add(this.button5);
+            this.groupBoxEditare.Controls.Add(this.btnAddNewEmployee);
+            this.groupBoxEditare.Controls.Add(this.btnUnassignEmployee);
             this.groupBoxEditare.Controls.Add(this.label1);
             this.groupBoxEditare.Controls.Add(this.txtHireDate);
             this.groupBoxEditare.Controls.Add(this.lblHireDate);
@@ -375,58 +364,63 @@
             // 
             // dataGridViewProjects
             // 
+            this.dataGridViewProjects.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewProjects.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
             this.dataGridViewProjects.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewProjects.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(78)))), ((int)(((byte)(117)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewProjects.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewProjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(78)))), ((int)(((byte)(117)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewProjects.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewProjects.Location = new System.Drawing.Point(308, 48);
             this.dataGridViewProjects.Name = "dataGridViewProjects";
             this.dataGridViewProjects.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewProjects.Size = new System.Drawing.Size(283, 149);
+            this.dataGridViewProjects.Size = new System.Drawing.Size(283, 156);
             this.dataGridViewProjects.TabIndex = 19;
             // 
-            // button7
+            // btnAddNewEmployee
             // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button7.Location = new System.Drawing.Point(619, 82);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(146, 24);
-            this.button7.TabIndex = 17;
-            this.button7.Text = "RESET";
-            this.button7.UseVisualStyleBackColor = false;
+            this.btnAddNewEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(78)))), ((int)(((byte)(117)))));
+            this.btnAddNewEmployee.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnAddNewEmployee.FlatAppearance.BorderSize = 0;
+            this.btnAddNewEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddNewEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddNewEmployee.ForeColor = System.Drawing.Color.White;
+            this.btnAddNewEmployee.Location = new System.Drawing.Point(94, 210);
+            this.btnAddNewEmployee.Name = "btnAddNewEmployee";
+            this.btnAddNewEmployee.Size = new System.Drawing.Size(182, 24);
+            this.btnAddNewEmployee.TabIndex = 16;
+            this.btnAddNewEmployee.Text = "ADD NEW";
+            this.btnAddNewEmployee.UseVisualStyleBackColor = false;
+            this.btnAddNewEmployee.Click += new System.EventHandler(this.btnAddNewEmployee_Click);
             // 
-            // button6
+            // btnUnassignEmployee
             // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(78)))), ((int)(((byte)(117)))));
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(94, 210);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(182, 24);
-            this.button6.TabIndex = 16;
-            this.button6.Text = "ADD NEW";
-            this.button6.UseVisualStyleBackColor = false;
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(104)))), ((int)(((byte)(88)))));
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(375, 210);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(146, 24);
-            this.button5.TabIndex = 15;
-            this.button5.Text = "UNASIGN EMPLOYEE";
-            this.button5.UseVisualStyleBackColor = false;
+            this.btnUnassignEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(104)))), ((int)(((byte)(88)))));
+            this.btnUnassignEmployee.FlatAppearance.BorderSize = 0;
+            this.btnUnassignEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUnassignEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUnassignEmployee.ForeColor = System.Drawing.Color.White;
+            this.btnUnassignEmployee.Location = new System.Drawing.Point(370, 210);
+            this.btnUnassignEmployee.Name = "btnUnassignEmployee";
+            this.btnUnassignEmployee.Size = new System.Drawing.Size(162, 24);
+            this.btnUnassignEmployee.TabIndex = 15;
+            this.btnUnassignEmployee.Text = "UNASSIGN EMPLOYEE";
+            this.btnUnassignEmployee.UseVisualStyleBackColor = false;
+            this.btnUnassignEmployee.Click += new System.EventHandler(this.btnUnassignEmployee_Click);
             // 
             // label1
             // 
@@ -467,6 +461,7 @@
             this.btnDeleteEmployee.TabIndex = 3;
             this.btnDeleteEmployee.Text = "DELETE EMPLOYEE";
             this.btnDeleteEmployee.UseVisualStyleBackColor = false;
+            this.btnDeleteEmployee.Click += new System.EventHandler(this.btnDeleteEmployee_Click);
             // 
             // lblBirthDate
             // 
@@ -592,10 +587,14 @@
             this.dataGridEmployees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridEmployees.Size = new System.Drawing.Size(785, 246);
             this.dataGridEmployees.TabIndex = 2;
-            this.dataGridEmployees.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridEmployees_CellContentClick);
+            this.dataGridEmployees.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridEmployees_CellContentClick);
             // 
             // pnlProjects
             // 
+            this.pnlProjects.Controls.Add(this.cmbRoleInProjects);
+            this.pnlProjects.Controls.Add(this.lblRoleInProjects);
+            this.pnlProjects.Controls.Add(this.btnAddEtoP);
+            this.pnlProjects.Controls.Add(this.dgvEmployeesP);
             this.pnlProjects.Controls.Add(this.groupBoxProjects);
             this.pnlProjects.Controls.Add(this.dgvProjectsP);
             this.pnlProjects.Location = new System.Drawing.Point(0, 46);
@@ -603,14 +602,67 @@
             this.pnlProjects.Size = new System.Drawing.Size(833, 517);
             this.pnlProjects.TabIndex = 20;
             // 
+            // cmbRoleInProjects
+            // 
+            this.cmbRoleInProjects.FormattingEnabled = true;
+            this.cmbRoleInProjects.Location = new System.Drawing.Point(644, 106);
+            this.cmbRoleInProjects.Name = "cmbRoleInProjects";
+            this.cmbRoleInProjects.Size = new System.Drawing.Size(166, 21);
+            this.cmbRoleInProjects.TabIndex = 23;
+            // 
+            // lblRoleInProjects
+            // 
+            this.lblRoleInProjects.AutoSize = true;
+            this.lblRoleInProjects.Location = new System.Drawing.Point(643, 84);
+            this.lblRoleInProjects.Name = "lblRoleInProjects";
+            this.lblRoleInProjects.Size = new System.Drawing.Size(29, 13);
+            this.lblRoleInProjects.TabIndex = 22;
+            this.lblRoleInProjects.Text = "Role";
+            // 
+            // btnAddEtoP
+            // 
+            this.btnAddEtoP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(78)))), ((int)(((byte)(117)))));
+            this.btnAddEtoP.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnAddEtoP.FlatAppearance.BorderSize = 0;
+            this.btnAddEtoP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddEtoP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddEtoP.ForeColor = System.Drawing.Color.White;
+            this.btnAddEtoP.Location = new System.Drawing.Point(644, 133);
+            this.btnAddEtoP.Name = "btnAddEtoP";
+            this.btnAddEtoP.Size = new System.Drawing.Size(166, 24);
+            this.btnAddEtoP.TabIndex = 22;
+            this.btnAddEtoP.Text = "ADD TO PROJECT";
+            this.btnAddEtoP.UseVisualStyleBackColor = false;
+            this.btnAddEtoP.Click += new System.EventHandler(this.btnAddEtoP_Click);
+            // 
+            // dgvEmployeesP
+            // 
+            this.dgvEmployeesP.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvEmployeesP.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.dgvEmployeesP.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvEmployeesP.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvEmployeesP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(78)))), ((int)(((byte)(117)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEmployeesP.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvEmployeesP.Location = new System.Drawing.Point(325, 11);
+            this.dgvEmployeesP.Name = "dgvEmployeesP";
+            this.dgvEmployeesP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvEmployeesP.Size = new System.Drawing.Size(290, 246);
+            this.dgvEmployeesP.TabIndex = 6;
+            // 
             // groupBoxProjects
             // 
             this.groupBoxProjects.Controls.Add(this.rbtnNo);
             this.groupBoxProjects.Controls.Add(this.rbtnYes);
             this.groupBoxProjects.Controls.Add(this.dbvEmployeesP);
-            this.groupBoxProjects.Controls.Add(this.btnResetProjects);
-            this.groupBoxProjects.Controls.Add(this.btnAddNewProject);
             this.groupBoxProjects.Controls.Add(this.btnUnasignEmployee);
+            this.groupBoxProjects.Controls.Add(this.btnAddNewProject);
             this.groupBoxProjects.Controls.Add(this.lblEmployeesOnProject);
             this.groupBoxProjects.Controls.Add(this.btnDeleteProject);
             this.groupBoxProjects.Controls.Add(this.label13);
@@ -627,7 +679,7 @@
             // rbtnNo
             // 
             this.rbtnNo.AutoSize = true;
-            this.rbtnNo.Location = new System.Drawing.Point(160, 57);
+            this.rbtnNo.Location = new System.Drawing.Point(157, 72);
             this.rbtnNo.Name = "rbtnNo";
             this.rbtnNo.Size = new System.Drawing.Size(39, 17);
             this.rbtnNo.TabIndex = 21;
@@ -638,7 +690,7 @@
             // rbtnYes
             // 
             this.rbtnYes.AutoSize = true;
-            this.rbtnYes.Location = new System.Drawing.Point(97, 56);
+            this.rbtnYes.Location = new System.Drawing.Point(94, 71);
             this.rbtnYes.Name = "rbtnYes";
             this.rbtnYes.Size = new System.Drawing.Size(43, 17);
             this.rbtnYes.TabIndex = 20;
@@ -648,29 +700,39 @@
             // 
             // dbvEmployeesP
             // 
+            this.dbvEmployeesP.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dbvEmployeesP.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
             this.dbvEmployeesP.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dbvEmployeesP.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dbvEmployeesP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dbvEmployeesP.Location = new System.Drawing.Point(308, 48);
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(78)))), ((int)(((byte)(117)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dbvEmployeesP.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dbvEmployeesP.Location = new System.Drawing.Point(301, 53);
             this.dbvEmployeesP.Name = "dbvEmployeesP";
             this.dbvEmployeesP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dbvEmployeesP.Size = new System.Drawing.Size(283, 149);
+            this.dbvEmployeesP.Size = new System.Drawing.Size(478, 138);
             this.dbvEmployeesP.TabIndex = 19;
             // 
-            // btnResetProjects
+            // btnUnasignEmployee
             // 
-            this.btnResetProjects.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.btnResetProjects.FlatAppearance.BorderSize = 0;
-            this.btnResetProjects.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResetProjects.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResetProjects.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnResetProjects.Location = new System.Drawing.Point(619, 127);
-            this.btnResetProjects.Name = "btnResetProjects";
-            this.btnResetProjects.Size = new System.Drawing.Size(146, 24);
-            this.btnResetProjects.TabIndex = 17;
-            this.btnResetProjects.Text = "RESET";
-            this.btnResetProjects.UseVisualStyleBackColor = false;
+            this.btnUnasignEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(104)))), ((int)(((byte)(88)))));
+            this.btnUnasignEmployee.FlatAppearance.BorderSize = 0;
+            this.btnUnasignEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUnasignEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUnasignEmployee.ForeColor = System.Drawing.Color.White;
+            this.btnUnasignEmployee.Location = new System.Drawing.Point(448, 197);
+            this.btnUnasignEmployee.Name = "btnUnasignEmployee";
+            this.btnUnasignEmployee.Size = new System.Drawing.Size(182, 24);
+            this.btnUnasignEmployee.TabIndex = 15;
+            this.btnUnasignEmployee.Text = "UNASIGN EMPLOYEE";
+            this.btnUnasignEmployee.UseVisualStyleBackColor = false;
+            this.btnUnasignEmployee.Click += new System.EventHandler(this.btnUnasignEmployee_Click);
             // 
             // btnAddNewProject
             // 
@@ -680,31 +742,18 @@
             this.btnAddNewProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddNewProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddNewProject.ForeColor = System.Drawing.Color.White;
-            this.btnAddNewProject.Location = new System.Drawing.Point(94, 129);
+            this.btnAddNewProject.Location = new System.Drawing.Point(94, 137);
             this.btnAddNewProject.Name = "btnAddNewProject";
             this.btnAddNewProject.Size = new System.Drawing.Size(182, 24);
             this.btnAddNewProject.TabIndex = 16;
             this.btnAddNewProject.Text = "ADD NEW";
             this.btnAddNewProject.UseVisualStyleBackColor = false;
-            // 
-            // btnUnasignEmployee
-            // 
-            this.btnUnasignEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(104)))), ((int)(((byte)(88)))));
-            this.btnUnasignEmployee.FlatAppearance.BorderSize = 0;
-            this.btnUnasignEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUnasignEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUnasignEmployee.ForeColor = System.Drawing.Color.White;
-            this.btnUnasignEmployee.Location = new System.Drawing.Point(375, 209);
-            this.btnUnasignEmployee.Name = "btnUnasignEmployee";
-            this.btnUnasignEmployee.Size = new System.Drawing.Size(146, 24);
-            this.btnUnasignEmployee.TabIndex = 15;
-            this.btnUnasignEmployee.Text = "UNASIGN EMPLOYEE";
-            this.btnUnasignEmployee.UseVisualStyleBackColor = false;
+            this.btnAddNewProject.Click += new System.EventHandler(this.btnAddNewProject_Click);
             // 
             // lblEmployeesOnProject
             // 
             this.lblEmployeesOnProject.AutoSize = true;
-            this.lblEmployeesOnProject.Location = new System.Drawing.Point(305, 24);
+            this.lblEmployeesOnProject.Location = new System.Drawing.Point(298, 30);
             this.lblEmployeesOnProject.Name = "lblEmployeesOnProject";
             this.lblEmployeesOnProject.Size = new System.Drawing.Size(130, 13);
             this.lblEmployeesOnProject.TabIndex = 14;
@@ -717,17 +766,18 @@
             this.btnDeleteProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteProject.ForeColor = System.Drawing.Color.White;
-            this.btnDeleteProject.Location = new System.Drawing.Point(619, 98);
+            this.btnDeleteProject.Location = new System.Drawing.Point(94, 167);
             this.btnDeleteProject.Name = "btnDeleteProject";
-            this.btnDeleteProject.Size = new System.Drawing.Size(146, 24);
+            this.btnDeleteProject.Size = new System.Drawing.Size(182, 24);
             this.btnDeleteProject.TabIndex = 3;
             this.btnDeleteProject.Text = "DELETE PROJECT";
             this.btnDeleteProject.UseVisualStyleBackColor = false;
+            this.btnDeleteProject.Click += new System.EventHandler(this.btnDeleteProject_Click);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(424, 69);
+            this.label13.Location = new System.Drawing.Point(424, 77);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(0, 13);
             this.label13.TabIndex = 9;
@@ -741,17 +791,18 @@
             this.btnUpdateProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdateProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateProject.ForeColor = System.Drawing.Color.White;
-            this.btnUpdateProject.Location = new System.Drawing.Point(94, 100);
+            this.btnUpdateProject.Location = new System.Drawing.Point(94, 108);
             this.btnUpdateProject.Name = "btnUpdateProject";
             this.btnUpdateProject.Size = new System.Drawing.Size(182, 24);
             this.btnUpdateProject.TabIndex = 8;
             this.btnUpdateProject.Text = "UPDATE";
             this.btnUpdateProject.UseVisualStyleBackColor = false;
+            this.btnUpdateProject.Click += new System.EventHandler(this.btnUpdateProject_Click);
             // 
             // lblFinished
             // 
             this.lblFinished.AutoSize = true;
-            this.lblFinished.Location = new System.Drawing.Point(18, 54);
+            this.lblFinished.Location = new System.Drawing.Point(18, 68);
             this.lblFinished.Name = "lblFinished";
             this.lblFinished.Size = new System.Drawing.Size(46, 13);
             this.lblFinished.TabIndex = 6;
@@ -760,7 +811,7 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(18, 26);
+            this.lblTitle.Location = new System.Drawing.Point(18, 34);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(27, 13);
             this.lblTitle.TabIndex = 4;
@@ -769,89 +820,86 @@
             // txtTitle
             // 
             this.txtTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTitle.Location = new System.Drawing.Point(94, 23);
+            this.txtTitle.Location = new System.Drawing.Point(94, 31);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(182, 20);
             this.txtTitle.TabIndex = 0;
             // 
             // dgvProjectsP
             // 
+            this.dgvProjectsP.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProjectsP.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
             this.dgvProjectsP.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProjectsP.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvProjectsP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(78)))), ((int)(((byte)(117)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProjectsP.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvProjectsP.Location = new System.Drawing.Point(24, 11);
             this.dgvProjectsP.Name = "dgvProjectsP";
             this.dgvProjectsP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProjectsP.Size = new System.Drawing.Size(785, 246);
+            this.dgvProjectsP.Size = new System.Drawing.Size(276, 246);
             this.dgvProjectsP.TabIndex = 4;
+            this.dgvProjectsP.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProjectsP_CellContentClick);
             // 
             // pnlRoles
             // 
-            this.pnlRoles.Controls.Add(this.groupBox1);
-            this.pnlRoles.Controls.Add(this.dataGridView2);
+            this.pnlRoles.Controls.Add(this.lblRoleTitle);
+            this.pnlRoles.Controls.Add(this.dataGridViewRoles);
             this.pnlRoles.Location = new System.Drawing.Point(0, 46);
             this.pnlRoles.Name = "pnlRoles";
             this.pnlRoles.Size = new System.Drawing.Size(833, 517);
             this.pnlRoles.TabIndex = 21;
             // 
-            // groupBox1
+            // lblRoleTitle
             // 
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.button8);
-            this.groupBox1.Controls.Add(this.label18);
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Location = new System.Drawing.Point(451, 11);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(308, 486);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
+            this.lblRoleTitle.Controls.Add(this.btnAddNewRole);
+            this.lblRoleTitle.Controls.Add(this.btnDeleteRole);
+            this.lblRoleTitle.Controls.Add(this.label14);
+            this.lblRoleTitle.Controls.Add(this.btnUpdateRole);
+            this.lblRoleTitle.Controls.Add(this.label18);
+            this.lblRoleTitle.Controls.Add(this.txtRoleTitle);
+            this.lblRoleTitle.Location = new System.Drawing.Point(451, 11);
+            this.lblRoleTitle.Name = "lblRoleTitle";
+            this.lblRoleTitle.Size = new System.Drawing.Size(308, 486);
+            this.lblRoleTitle.TabIndex = 5;
+            this.lblRoleTitle.TabStop = false;
             // 
-            // button1
+            // btnAddNewRole
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button1.Location = new System.Drawing.Point(97, 343);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(181, 24);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "RESET";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnAddNewRole.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(78)))), ((int)(((byte)(117)))));
+            this.btnAddNewRole.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnAddNewRole.FlatAppearance.BorderSize = 0;
+            this.btnAddNewRole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddNewRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddNewRole.ForeColor = System.Drawing.Color.White;
+            this.btnAddNewRole.Location = new System.Drawing.Point(95, 195);
+            this.btnAddNewRole.Name = "btnAddNewRole";
+            this.btnAddNewRole.Size = new System.Drawing.Size(182, 24);
+            this.btnAddNewRole.TabIndex = 16;
+            this.btnAddNewRole.Text = "ADD NEW";
+            this.btnAddNewRole.UseVisualStyleBackColor = false;
+            this.btnAddNewRole.Click += new System.EventHandler(this.btnAddNewRole_Click);
             // 
-            // button2
+            // btnDeleteRole
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(78)))), ((int)(((byte)(117)))));
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(95, 195);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(182, 24);
-            this.button2.TabIndex = 16;
-            this.button2.Text = "ADD NEW";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(104)))), ((int)(((byte)(88)))));
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(96, 309);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(181, 24);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "DELETE ROLE";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnDeleteRole.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(104)))), ((int)(((byte)(88)))));
+            this.btnDeleteRole.FlatAppearance.BorderSize = 0;
+            this.btnDeleteRole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteRole.ForeColor = System.Drawing.Color.White;
+            this.btnDeleteRole.Location = new System.Drawing.Point(96, 309);
+            this.btnDeleteRole.Name = "btnDeleteRole";
+            this.btnDeleteRole.Size = new System.Drawing.Size(181, 24);
+            this.btnDeleteRole.TabIndex = 3;
+            this.btnDeleteRole.Text = "DELETE ROLE";
+            this.btnDeleteRole.UseVisualStyleBackColor = false;
+            this.btnDeleteRole.Click += new System.EventHandler(this.btnDeleteRole_Click);
             // 
             // label14
             // 
@@ -862,20 +910,21 @@
             this.label14.TabIndex = 9;
             this.label14.Visible = false;
             // 
-            // button8
+            // btnUpdateRole
             // 
-            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(129)))), ((int)(((byte)(100)))));
-            this.button8.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Location = new System.Drawing.Point(95, 165);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(182, 24);
-            this.button8.TabIndex = 8;
-            this.button8.Text = "UPDATE";
-            this.button8.UseVisualStyleBackColor = false;
+            this.btnUpdateRole.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(129)))), ((int)(((byte)(100)))));
+            this.btnUpdateRole.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnUpdateRole.FlatAppearance.BorderSize = 0;
+            this.btnUpdateRole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdateRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateRole.ForeColor = System.Drawing.Color.White;
+            this.btnUpdateRole.Location = new System.Drawing.Point(95, 165);
+            this.btnUpdateRole.Name = "btnUpdateRole";
+            this.btnUpdateRole.Size = new System.Drawing.Size(182, 24);
+            this.btnUpdateRole.TabIndex = 8;
+            this.btnUpdateRole.Text = "UPDATE";
+            this.btnUpdateRole.UseVisualStyleBackColor = false;
+            this.btnUpdateRole.Click += new System.EventHandler(this.btnUpdateRole_Click);
             // 
             // label18
             // 
@@ -886,40 +935,46 @@
             this.label18.TabIndex = 4;
             this.label18.Text = "Title";
             // 
-            // textBox5
+            // txtRoleTitle
             // 
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox5.Location = new System.Drawing.Point(94, 130);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(182, 20);
-            this.textBox5.TabIndex = 0;
+            this.txtRoleTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtRoleTitle.Location = new System.Drawing.Point(94, 130);
+            this.txtRoleTitle.Name = "txtRoleTitle";
+            this.txtRoleTitle.Size = new System.Drawing.Size(182, 20);
+            this.txtRoleTitle.TabIndex = 0;
             // 
-            // dataGridView2
+            // dataGridViewRoles
             // 
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(75, 18);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(363, 479);
-            this.dataGridView2.TabIndex = 4;
+            this.dataGridViewRoles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewRoles.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.dataGridViewRoles.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewRoles.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridViewRoles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(78)))), ((int)(((byte)(117)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewRoles.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridViewRoles.Location = new System.Drawing.Point(75, 18);
+            this.dataGridViewRoles.Name = "dataGridViewRoles";
+            this.dataGridViewRoles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewRoles.Size = new System.Drawing.Size(363, 479);
+            this.dataGridViewRoles.TabIndex = 4;
+            this.dataGridViewRoles.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRoles_CellContentClick);
             // 
             // pnlContainer
             // 
+            this.pnlContainer.Controls.Add(this.btnRoles);
+            this.pnlContainer.Controls.Add(this.btnProjects);
+            this.pnlContainer.Controls.Add(this.btnEmployees);
             this.pnlContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContainer.Location = new System.Drawing.Point(0, 0);
             this.pnlContainer.Name = "pnlContainer";
             this.pnlContainer.Size = new System.Drawing.Size(834, 591);
             this.pnlContainer.TabIndex = 22;
-            // 
-            // pnlSettings
-            // 
-            this.pnlSettings.Location = new System.Drawing.Point(0, 46);
-            this.pnlSettings.Name = "pnlSettings";
-            this.pnlSettings.Size = new System.Drawing.Size(833, 517);
-            this.pnlSettings.TabIndex = 21;
             // 
             // FormaAfisare
             // 
@@ -927,17 +982,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 591);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnSettings);
-            this.Controls.Add(this.btnRoles);
-            this.Controls.Add(this.btnProjects);
             this.Controls.Add(this.btnHome);
-            this.Controls.Add(this.btnEmployees);
-            this.Controls.Add(this.pnlHome);
             this.Controls.Add(this.pnlEmployees);
             this.Controls.Add(this.pnlProjects);
-            this.Controls.Add(this.pnlSettings);
             this.Controls.Add(this.pnlRoles);
             this.Controls.Add(this.pnlContainer);
+            this.Controls.Add(this.pnlHome);
             this.Name = "FormaAfisare";
             this.Text = "Employees Management System";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormaAfisare_FormClosed);
@@ -945,10 +995,8 @@
             this.pnlHome.ResumeLayout(false);
             this.pnlHome.PerformLayout();
             this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlEmployees.ResumeLayout(false);
             this.groupBoxEditare.ResumeLayout(false);
@@ -956,14 +1004,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProjects)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridEmployees)).EndInit();
             this.pnlProjects.ResumeLayout(false);
+            this.pnlProjects.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeesP)).EndInit();
             this.groupBoxProjects.ResumeLayout(false);
             this.groupBoxProjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbvEmployeesP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProjectsP)).EndInit();
             this.pnlRoles.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.lblRoleTitle.ResumeLayout(false);
+            this.lblRoleTitle.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRoles)).EndInit();
+            this.pnlContainer.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -974,7 +1025,6 @@
         private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.Button btnProjects;
         private System.Windows.Forms.Button btnRoles;
-        private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel pnlHome;
         private System.Windows.Forms.Panel pnlProjects;
@@ -983,9 +1033,8 @@
         private System.Windows.Forms.Panel pnlEmployees;
         private System.Windows.Forms.GroupBox groupBoxEditare;
         private System.Windows.Forms.DataGridView dataGridViewProjects;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnAddNewEmployee;
+        private System.Windows.Forms.Button btnUnassignEmployee;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtHireDate;
         private System.Windows.Forms.Label lblHireDate;
@@ -1014,12 +1063,10 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblCelebrationMessage;
         private System.Windows.Forms.Label lblCelebratedName;
-        private System.Windows.Forms.Panel pnlSettings;
         private System.Windows.Forms.GroupBox groupBoxProjects;
         private System.Windows.Forms.RadioButton rbtnNo;
         private System.Windows.Forms.RadioButton rbtnYes;
         private System.Windows.Forms.DataGridView dbvEmployeesP;
-        private System.Windows.Forms.Button btnResetProjects;
         private System.Windows.Forms.Button btnAddNewProject;
         private System.Windows.Forms.Button btnUnasignEmployee;
         private System.Windows.Forms.Label lblEmployeesOnProject;
@@ -1030,15 +1077,18 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.DataGridView dgvProjectsP;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.GroupBox lblRoleTitle;
+        private System.Windows.Forms.Button btnAddNewRole;
+        private System.Windows.Forms.Button btnDeleteRole;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btnUpdateRole;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.TextBox txtRoleTitle;
+        private System.Windows.Forms.DataGridView dataGridViewRoles;
+        private System.Windows.Forms.Label lblRoleInProjects;
+        private System.Windows.Forms.Button btnAddEtoP;
+        private System.Windows.Forms.DataGridView dgvEmployeesP;
+        private System.Windows.Forms.ComboBox cmbRoleInProjects;
     }
 }
 

@@ -20,15 +20,6 @@ namespace InterfataUtilizator
                 {
                     default:
                     case "BazaDateOracle":
-
-                        if (tipEntitate == typeof(Companie))
-                        {
-                            return new AdministrareCompanii();
-                        }
-                        if (tipEntitate == typeof(Masina))
-                        {
-                            return new AdministrareMasini();
-                        }
                         if (tipEntitate == typeof(Employee))
                         {
                             return new EmployeesAdministrator();
@@ -36,6 +27,14 @@ namespace InterfataUtilizator
                         if (tipEntitate == typeof(Role))
                         {
                             return new RolesAdministrator();
+                        }
+                        if (tipEntitate == typeof(Project))
+                        {
+                            return new ProjectsAdministrator();
+                        }
+                        if (tipEntitate == typeof(EmployeeInProject))
+                        {
+                            return new EmployeesInProjectsAdministrator();
                         }
 
                         break;

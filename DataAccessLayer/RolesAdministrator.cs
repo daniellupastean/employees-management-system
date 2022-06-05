@@ -45,8 +45,7 @@ namespace NivelAccesDate
         public bool AddRole(Role r)
         {
             return SqlDBHelper.ExecuteNonQuery(
-                "INSERT INTO roles_ems_lup VALUES (seq_projects_ems_lup.nextval, :RoleId, :Title)", CommandType.Text,
-                new OracleParameter(":RoleId", OracleDbType.Int32, r.RoleId, ParameterDirection.Input),
+                "INSERT INTO roles_ems_lup VALUES (seq_roles_ems_lup.nextval, :Title)", CommandType.Text,
                 new OracleParameter(":Title", OracleDbType.NVarchar2, r.Title, ParameterDirection.Input)
             );
         }
@@ -58,6 +57,12 @@ namespace NivelAccesDate
                 new OracleParameter(":Title", OracleDbType.NVarchar2, r.Title, ParameterDirection.Input),
                 new OracleParameter(":RoleId", OracleDbType.Int32, r.RoleId, ParameterDirection.Input)
             );
+        }
+
+        public bool DeleteRole(int id)
+        {
+            return SqlDBHelper.ExecuteNonQuery("DELETE FROM roles_ems_lup WHERE role_id = :RoleId", CommandType.Text,
+                new OracleParameter(":RoleId", OracleDbType.Int32, id, ParameterDirection.Input));
         }
     }
 }

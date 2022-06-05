@@ -11,5 +11,7 @@ namespace NivelAccesDate
         Project GetProject(int id);
         bool AddProject(Project p);
         bool UpdateProject(Project p);
+        int GetProjectsNumber();
+        bool DeleteProject(int id);
     }
 }

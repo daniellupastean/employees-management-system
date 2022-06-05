@@ -60,8 +60,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Companie.cs" />
-    <Compile Include="Masina.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="Role.cs" />
     <Compile Include="Employee.cs" />
