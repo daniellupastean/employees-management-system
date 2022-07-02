@@ -4,6 +4,8 @@ using System.Linq;
 using System.Windows.Forms;
 using NivelAccesDate;
 using LibrarieModele;
+using System.Text.RegularExpressions;
+using System.Net.Mail;
 
 namespace InterfataUtilizator
 {
@@ -89,11 +91,12 @@ namespace InterfataUtilizator
 
                 if (employees != null && employees.Any())
                 {
-                    dataGridEmployees.DataSource = employees.Select(e=> new { e.EmployeeId, e.FirstName, e.LastName, e.Email, e.BirthDate, e.HireDate, e.Role.Title }).ToList() ;
+                    dataGridEmployees.DataSource = employees.Select(e => new { e.EmployeeId, e.FirstName, e.LastName, e.Email, e.BirthDate, e.HireDate, e.Role.Title }).ToList();
                     dataGridEmployees.Columns["EmployeeId"].Visible = false;
                     dataGridEmployees.Columns["Title"].HeaderText = "Role";
                     // dataGridEmployees.Columns["DataFabricatie"].HeaderText = "Data fabricatie";
                 }
+                dataGridEmployees.ClearSelection();
             }
             catch (Exception ex)
             {
@@ -135,12 +138,13 @@ namespace InterfataUtilizator
                     dataGridViewRoles.Columns["Title"].HeaderText = "Role";
                     // dataGridEmployees.Columns["DataFabricatie"].HeaderText = "Data fabricatie";
                 }
+                dataGridViewRoles.ClearSelection();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
             }
-        }        
+        }
         private void ShowProjects()
         {
             try
@@ -151,9 +155,10 @@ namespace InterfataUtilizator
                 {
                     dgvProjectsP.DataSource = projects.Select(e => new { e.ProjectId, e.Title, e.Finished }).ToList();
                     dgvProjectsP.Columns["ProjectId"].Visible = false;
-                   // dgvProjectsP.Columns["Title"].HeaderText = "Role";
-                   // dataGridEmployees.Columns["DataFabricatie"].HeaderText = "Data fabricatie";
+                    // dgvProjectsP.Columns["Title"].HeaderText = "Role";
+                    // dataGridEmployees.Columns["DataFabricatie"].HeaderText = "Data fabricatie";
                 }
+                dgvProjectsP.ClearSelection();
             }
             catch (Exception ex)
             {
@@ -167,12 +172,14 @@ namespace InterfataUtilizator
         }
         private void btnEmployees_Click(object sender, EventArgs e)
         {
+            resetEmployeesInputs();
             pnlEmployees.BringToFront();
             ShowEmployees();
             LoadRoles();
         }
         private void btnProjects_Click(object sender, EventArgs e)
         {
+            resetProjectsInputs();
             ShowProjects();
             ShowEmployeesInProjects();
             LoadRolesInProjects();
@@ -181,6 +188,7 @@ namespace InterfataUtilizator
         }
         private void btnRoles_Click(object sender, EventArgs e)
         {
+            resetRolesInputs();
             ShowRoles();
             pnlRoles.BringToFront();
         }
@@ -213,6 +221,11 @@ namespace InterfataUtilizator
         {
             try
             {
+                if (!Utils.dgvHasSelectedRow(dataGridEmployees))
+                {
+                    MessageBox.Show("There's no selected employee");
+                    return;
+                }
                 int currentRowIndex = dataGridEmployees.CurrentCell.RowIndex;
                 string employeeId = dataGridEmployees[PRIMA_COLOANA, currentRowIndex].Value.ToString();
                 var employee = new Employee(
@@ -230,6 +243,7 @@ namespace InterfataUtilizator
                 {
                     MessageBox.Show("Updated employee");
                     ShowEmployees();
+                    resetEmployeesInputs();
                 }
                 else
                 {
@@ -270,6 +284,11 @@ namespace InterfataUtilizator
         {
             try
             {
+                if(!validInputsEmployees())
+                {
+                    MessageBox.Show("Inputs are not valid");
+                    return;
+                }
                 var employee = new Employee(
                        txtFirstName.Text,
                        txtLastName.Text,
@@ -284,6 +303,7 @@ namespace InterfataUtilizator
                 {
                     MessageBox.Show("Added employee");
                     ShowEmployees();
+                    resetEmployeesInputs();
                 }
                 else
                 {
@@ -299,6 +319,11 @@ namespace InterfataUtilizator
         {
             try
             {
+                if (!Utils.dgvHasSelectedRow(dataGridEmployees))
+                {
+                    MessageBox.Show("There's no selected employee");
+                    return;
+                }
                 int currentRowIndex = dataGridEmployees.CurrentCell.RowIndex;
                 int employeeId = int.Parse(dataGridEmployees[PRIMA_COLOANA, currentRowIndex].Value.ToString());
 
@@ -308,6 +333,7 @@ namespace InterfataUtilizator
                 {
                     MessageBox.Show("Deleted employee");
                     ShowEmployees();
+                    resetEmployeesInputs();
                 }
                 else
                 {
@@ -343,7 +369,7 @@ namespace InterfataUtilizator
         {
             try
             {
-                var role = new Role( txtRoleTitle.Text );
+                var role = new Role(txtRoleTitle.Text);
 
                 var result = storeRoles.AddRole(role);
 
@@ -351,7 +377,7 @@ namespace InterfataUtilizator
                 {
                     //MessageBox.Show("Role added");
                     ShowRoles();
-                    txtRoleTitle.Text = "";
+                    resetRolesInputs();
                 }
                 else
                 {
@@ -369,7 +395,7 @@ namespace InterfataUtilizator
             {
                 int currentRowIndex = dataGridViewRoles.CurrentCell.RowIndex;
                 int roleId = int.Parse(dataGridViewRoles[PRIMA_COLOANA, currentRowIndex].Value.ToString());
-                var role = new Role( txtRoleTitle.Text, roleId );
+                var role = new Role(txtRoleTitle.Text, roleId);
 
 
                 var result = storeRoles.UpdateRole(role);
@@ -378,7 +404,7 @@ namespace InterfataUtilizator
                 {
                     //MessageBox.Show("Updated role");
                     ShowRoles();
-                    txtRoleTitle.Text = "";
+                    resetRolesInputs(); 
                 }
                 else
                 {
@@ -403,7 +429,7 @@ namespace InterfataUtilizator
                 {
                     MessageBox.Show("Deleted role");
                     ShowRoles();
-                    txtRoleTitle.Text = "";
+                    resetRolesInputs();
                 }
                 else
                 {
@@ -452,7 +478,7 @@ namespace InterfataUtilizator
                 {
                     //MessageBox.Show("Project added");
                     ShowProjects();
-                    txtTitle.Text = "";
+                    resetProjectsInputs();
                 }
                 else
                 {
@@ -477,7 +503,7 @@ namespace InterfataUtilizator
                 {
                     MessageBox.Show("Project deleted");
                     ShowProjects();
-                    txtTitle.Text = "";
+                    resetProjectsInputs();
                 }
                 else
                 {
@@ -573,7 +599,6 @@ namespace InterfataUtilizator
                 dataGridViewProjects.Columns["ProjectId"].Visible = false;
             }
         }
-
         private void btnUnasignEmployee_Click(object sender, EventArgs e)
         {
             // to be continued
@@ -600,7 +625,6 @@ namespace InterfataUtilizator
                 MessageBox.Show("Exception" + ex.Message);
             }
         }
-
         private void btnUnassignEmployee_Click(object sender, EventArgs e)
         {
             // to be continued
@@ -627,5 +651,111 @@ namespace InterfataUtilizator
                 MessageBox.Show("Exception" + ex.Message);
             }
         }
+
+        private void resetEmployeesInputs()
+        {
+            txtFirstName.Text = "";
+            txtLastName.Text = "";
+            txtEmail.Text = "";
+            txtBirthDate.Text = "";
+            txtHireDate.Text = "";
+            cmbRoles.SelectedItem = null;
+        }
+        private void resetProjectsInputs()
+        {
+            txtTitle.Text = "";
+            rbtnNo.Checked = false;
+            rbtnYes.Checked = false;
+        }
+        private void resetRolesInputs()
+        {
+            txtRoleTitle.Text = "";
+        }
+
+        private bool validInputsEmployees()
+        {
+            if (!Utils.IsTextInputNotEmpty(txtFirstName))
+                return false;
+            if (!Utils.IsTextInputNotEmpty(txtLastName))
+                return false;
+            if (!Utils.IsTextInputNotEmpty(txtEmail))
+                return false;
+            if (!Utils.IsValidEmail(txtEmail.Text))
+                return false;
+            if (!Utils.IsTextInputNotEmpty(txtBirthDate))
+                return false;
+            if (!Utils.IsTextInputNotEmpty(txtHireDate))
+                return false;
+            if (cmbRoles.SelectedIndex == -1) return false;
+
+            return true;
+        }
+        private bool validInputsProjects()
+        {
+            if (!Utils.IsTextInputNotEmpty(txtTitle))
+                return false;
+            return true;
+        }
+        private bool validInputsRoles()
+        {
+            if (!Utils.IsTextInputNotEmpty(txtRoleTitle))
+                return false;
+            return true;
+        }
+    }
+
+
+    public class Utils
+    {
+        public static bool IsValidEmail(string emailaddress)
+        {
+            try
+            {
+                MailAddress m = new MailAddress(emailaddress);
+
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
+        public static bool OnlyDigits(string s)
+        {
+            foreach (char c in s)
+            {
+                if (c < '0' || c > '9')
+                    return false;
+            }
+            return true;
+        }
+        public static bool OnlyLetters(string s)
+        {
+            return Regex.IsMatch(s, @"^[\p{L}]+$");
+        }
+        public static bool IsFloatNumber(string s)
+        {
+            return float.TryParse(s, out _);
+        }
+        public static bool IsIntNumber(string s)
+        {
+            return int.TryParse(s, out _);
+        }
+        public static bool dgvHasSelectedRow(DataGridView dgv)
+        {
+            if (dgv.SelectedRows.Count > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+        public static bool IsTextInputNotEmpty(TextBox txt)
+        {
+            if (txt.Text == "" || txt.Text == null)
+                return false;
+            return true;
+        } 
     }
 }
+
+

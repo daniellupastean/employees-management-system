@@ -13,7 +13,7 @@ namespace NivelAccesDate
         public List<Role> GetRoles()
         {
             var result = new List<Role>();
-            var dsRoles = SqlDBHelper.ExecuteDataSet("SELECT * FROM roles_ems_lup", CommandType.Text);
+            var dsRoles = SqlDBHelper.ExecuteDataSet("SELECT * FROM roles_ems_lup WHERE is_deleted=0", CommandType.Text);
 
             foreach (DataRow linieBD in dsRoles.Tables[PRIMUL_TABEL].Rows)
             {
@@ -61,7 +61,7 @@ namespace NivelAccesDate
 
         public bool DeleteRole(int id)
         {
-            return SqlDBHelper.ExecuteNonQuery("DELETE FROM roles_ems_lup WHERE role_id = :RoleId", CommandType.Text,
+            return SqlDBHelper.ExecuteNonQuery("UPDATE roles_ems_lup SET is_deleted=1 WHERE role_id = :RoleId", CommandType.Text,
                 new OracleParameter(":RoleId", OracleDbType.Int32, id, ParameterDirection.Input));
         }
     }
